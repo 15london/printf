@@ -12,12 +12,24 @@
  * @size: Size specifier
  * Return: Number of chars to be printed
  */
+
+/**
 int print_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char c = va_arg(types, char);
 
 	return (handle_write_char(c, buffer, flags, width, precision, size));
+}
+*/
+
+int printf_char(va_list val)
+{
+        char s;
+
+        s = va_arg(val, int);
+        putchar(s);
+        return (1);
 }
 /************************* PRINT A STRING *************************/
 /**
@@ -30,6 +42,7 @@ int print_char(va_list types, char buffer[],
  * @size: Size specifier
  * Return: Number of chars to be printed
  */
+/*
 int print_string(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
@@ -78,6 +91,28 @@ int print_string(va_list types, char buffer[],
 
 	return (write(1, str, length));
 }
+*/
+
+int printf_string(va_list val)
+{
+        char *s;
+
+        int i = 0;
+
+        s = va_arg(val, char *);
+
+        if (!s)
+                s = "(null)";
+
+        while (s[i] != '\0')
+        {
+                putchar(s[i]);
+                i++;
+        }
+
+        return (i);
+}
+
 /************************* PRINT PERCENT SIGN *************************/
 /**
  * print_percent - Prints a percent sign
@@ -89,6 +124,8 @@ int print_string(va_list types, char buffer[],
  * @size: Size specifier
  * Return: Number of chars to be printed
  */
+
+/**
 int print_percent(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
@@ -99,6 +136,14 @@ int print_percent(va_list types, char buffer[],
 	UNUSED(precision);
 	UNUSED(size);
 	return (write(1, "%%", 1));
+}
+*/
+
+int printf_percent(va_list val)
+{
+        (void) val;
+        putchar('%');
+        return (1);
 }
 
 /************************* PRINT INT *************************/
