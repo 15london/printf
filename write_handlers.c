@@ -16,7 +16,7 @@ int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size)
 { /* char is stored at left and paddind at buffer's right */
 	int i = 0;
-	char padd = '';
+	char padd = ' ';
 
 	UNUSED(precision);
 	UNUSED(size);
@@ -137,7 +137,6 @@ int write_num(int ind, char buffer[],
 	return (write(1, &buffer[ind], length));
 }
 
-/**
 /**
  * write_unsgnd - Writes an unsigned number
  * @is_negative: Number indicating if the num is negative
